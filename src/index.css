@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Focus visibility (accesibilidad con teclado) ────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─── Dark theme ──────────────────────────────────────────── */
+:root {
+  --bg:        #0d1117;
+  --surface:   #161b22;
+  --surface2:  #1f2937;
+  --border:    #2d3748;
+  --border2:   #4a5568;
+  --text:      #f0f4f8;
+  --text2:     #cbd5e0;
+  --muted:     #98a2b3;
+  --subtle:    #6b7688;
+  --faint:     #566072;
+
+  --py-blue:   #4B8BBE;
+  --py-yellow: #FFE873;
+  --py-blue2:  #306998;
+  --py-yellow2:#FFD43B;
+
+  --accent:    #3dd68c;
+  --accent-bg: rgba(61,214,140,0.10);
+  --danger:    #f87171;
+  --purple:    #c084fc;
+
+  --code-bg:   #0d1117;
+  --code-bar:  #161b22;
+  --scrollbar:       color-mix(in srgb, var(--accent) 40%, transparent);
+  --scrollbar-hover: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+/* ─── Light theme ─────────────────────────────────────────── */
+.light {
+  --bg:        #f0f2f7;
+  --surface:   #ffffff;
+  --surface2:  #f4f6fb;
+  --border:    #e2e8f0;
+  --border2:   #cbd5e0;
+  --text:      #0f172a;
+  --text2:     #1e293b;
+  --muted:     #475569;
+  --subtle:    #64748b;
+  --faint:     #94a3b8;
+
+  /* Tema claro sobrio: un solo azul primario + neutros */
+  --py-blue:   #3f5e8c;
+  --py-yellow: #6b7280;
+  --py-blue2:  #34507a;
+  --py-yellow2:#4b5563;
+
+  --accent:    #3f5e8c;
+  --accent-bg: rgba(63,94,140,0.09);
+  --danger:    #b45454;
+  --purple:    #6b7280;
+
+  --code-bg:   #0f1117;
+  --code-bar:  #1a1f2e;
+  /* --scrollbar / --scrollbar-hover se derivan de --accent (ver :root) */
+}
+
+/* ─── Scrollbars ──────────────────────────────────────────── */
+/* El color se controla con --scrollbar / --scrollbar-hover (definidos
+   en :root a partir de --accent). Ajusta ahí el porcentaje o pon un
+   color fijo si prefieres. */
+* { scrollbar-width: thin; scrollbar-color: var(--scrollbar) transparent; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); background-clip: padding-box; }
+
+/* ─── Code blocks ─────────────────────────────────────────── */
+.code-block {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: #e2e8f0;
+}
+
+/* Syntax — always on dark bg */
+.keyword  { color: #f87171; }
+.string   { color: #93c5fd; }
+.comment  { color: #64748b; font-style: italic; }
+.number   { color: #fbbf24; }
+.builtin  { color: #34d399; }
+
+/* ─── Animations ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: fadeUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── Bienvenida: nombre (entrada sutil) ──────────────────── */
+@keyframes nameCharIn {
+  from { opacity: 0; transform: translateY(0.3em); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);     filter: blur(0); }
+}
+@keyframes nameLineIn {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.name-reveal {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  color: var(--text);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.name-reveal .ch {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  animation: nameCharIn 0.5s cubic-bezier(0.22, 0.7, 0.3, 1) forwards;
+}
+.name-underline {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform-origin: left center;
+  animation: nameLineIn 0.55s 0.2s cubic-bezier(0.22, 0.7, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-reveal .ch,
+  .name-underline {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ─── Aparición al hacer scroll ───────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.7, 0.3, 1);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Acordeón de ejercicios (altura animada) ─────────────── */
+.exercise-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.22, 0.7, 0.3, 1),
+    opacity 0.3s ease;
+  opacity: 0;
+}
+.exercise-body.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.exercise-body > .exercise-body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .exercise-body { transition: none !important; }
+}
+
+/* ─── Card elevation ──────────────────────────────────────── */
+.light .card-elevated {
+  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+}
+.light .card-elevated:hover {
+  box-shadow: 0 4px 12px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.05);
+}
+
+/* ─── Sidebar nav items ───────────────────────────────────── */
+.nav-item {
+  background: transparent;
+  color: var(--muted);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-item:hover {
+  background: var(--surface2);
+  color: var(--text2);
+}
+.nav-item.active {
+  background: var(--accent);
+  color: #0d1117;
+  font-weight: 600;
+}
+.light .nav-item.active {
+  color: #ffffff;
+}
+.nav-item.active:hover {
+  background: var(--accent);
+  color: #0d1117;
+}
+.light .nav-item.active:hover {
+  color: #ffffff;
+}
+
+/* ─── Mobile sidebar overlay ──────────────────────────────── */
+.sidebar-backdrop { display: none; }
+
+@media (max-width: 767px) {
+  .app-sidebar {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: 40;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.35);
+  }
+  .sidebar-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    background: rgba(0,0,0,0.5);
+  }
+}

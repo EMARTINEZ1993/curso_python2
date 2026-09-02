@@ -1,0 +1,12 @@
+{
+  "title": "Eli.Py — Algoritmos y Lógica con Python",
+  "description": "Material del Taller 0 de COMPUESTUDIO: algoritmos y lógica con Python, desde variables hasta un sistema de evaluación de notas.",
+  "language": "es",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
