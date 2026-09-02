@@ -443,11 +443,37 @@ print(f"El mayor de los tres números es: {mayor}")`,
     ],
     workshop: {
       items: [
-        "Solicitar un año y determinar si es bisiesto (divisible entre 4, excepto entre 100, salvo que también lo sea entre 400).",
-        "Solicitar el valor de una compra y aplicar descuento: 10% si > $100.000, 5% si entre $50.000–$100.000, 0% si < $50.000. Mostrar valor final.",
-        "Solicitar los tres lados de un triángulo, verificar si es válido y, si lo es, indicar si es equilátero, isósceles o escaleno.",
-        "Solicitar una letra de calificación (A, B, C, D o F) y mostrar el rango de nota que representa.",
-        "Solicitar dos números y un operador (+, -, * o /), mostrar el resultado validando división entre cero.",
+        `Elaborar un algoritmo que solicite el nombre y la edad de una persona y determine si es mayor o menor de edad.
+- Se considera mayor de edad a partir de los 18 años.
+- Validar que la edad ingresada no sea un valor negativo; si lo es, mostrar un mensaje de error.
+- Si la persona es menor de edad, calcular y mostrar cuántos años le faltan para cumplir la mayoría de edad.
+- Al finalizar, debe mostrar el nombre, la edad ingresada y el resultado correspondiente.`,
+        `Elaborar un algoritmo que solicite el nombre de un estudiante y su calificación final, en una escala de 0.0 a 5.0.
+- Se aprueba con una calificación igual o superior a 3.0.
+- Debe validar que la calificación esté dentro del rango permitido (0.0 a 5.0); si no lo está, mostrar un mensaje de error y no continuar con la evaluación.
+- Además de aprobado/reprobado, clasificar el desempeño: "Excelente" (4.5–5.0), "Bueno" (3.5–4.4), "Aceptable" (3.0–3.4) o "Insuficiente" (menor a 3.0).
+- Al finalizar, debe mostrar el nombre del estudiante, la calificación ingresada, el resultado (aprueba o reprueba) y la clasificación del desempeño.`,
+        `Elaborar un algoritmo que solicite el nombre de un cliente y el valor total de una compra, y calcule el descuento según el valor:
+- Menos de $100.000 → sin descuento.
+- Entre $100.000 y $299.999 → 10 % de descuento.
+- Entre $300.000 y $499.999 → 15 % de descuento.
+- $500.000 o más → 20 % de descuento.
+- Validar que el valor de la compra sea mayor a cero; si no lo es, mostrar un mensaje de error.
+- Al finalizar, debe mostrar el valor de la compra, el porcentaje de descuento aplicado, el valor descontado en pesos y el total a pagar.`,
+        `Elaborar un algoritmo que solicite el nombre de una ciudad y la temperatura actual en grados Celsius, y la clasifique según estos rangos:
+- Menor a 10 °C → "Muy fría".
+- De 10 °C a 17 °C → "Fría".
+- De 18 °C a 25 °C → "Templada".
+- De 26 °C a 32 °C → "Caliente".
+- Mayor a 32 °C → "Muy caliente".
+- Adicionalmente, indicar si se recomienda llevar abrigo (temperaturas menores a 18 °C).
+- Al finalizar, debe mostrar la ciudad, la temperatura registrada, su clasificación y la recomendación.`,
+        `Elaborar un algoritmo que solicite el nombre de un empleado, las horas trabajadas durante el mes y el valor de cada hora.
+- Las primeras 160 horas son horas normales y se pagan con la tarifa establecida.
+- Las horas por encima de 160 son horas extra y se pagan al 125 % del valor de la hora normal.
+- Validar que las horas trabajadas y el valor de la hora sean valores positivos.
+- Calcular un descuento de salud y pensión equivalente al 8 % del salario total (bruto) y obtener el salario neto a pagar.
+- Al finalizar, debe mostrar las horas normales, las horas extra, el pago por cada una, el salario total (bruto) y el salario neto después del descuento.`,
       ],
     },
   },
@@ -540,11 +566,23 @@ print(f"El factorial de {n} es: {factorial}")`,
     ],
     workshop: {
       items: [
-        "Solicitar un número y determinar, mediante un ciclo, si es un número primo.",
-        "Solicitar n números al usuario (uno por uno con for + range) y calcular su promedio.",
-        "Mostrar la serie de Fibonacci hasta la cantidad de términos que indique el usuario.",
-        "Solicitar números al usuario hasta que ingrese -1; mostrar cuántos se ingresaron y cuál fue el mayor.",
-        "Solicitar un número entero y usar ciclos anidados (for dentro de for) para imprimir un triángulo de asteriscos.",
+        `Adivina el número — Ciclo while: genera un número entero aleatorio entre 1 y 10 y solicita al usuario que intente adivinarlo.
+- Simular un ciclo do...while con while True + break, ya que Python no tiene esa estructura nativa.
+- Repetir la pregunta mientras el número ingresado sea diferente al número generado.
+- Mostrar un mensaje de acierto cuando el usuario adivine correctamente.`,
+        `Cuenta regresiva — Ciclo while: solicita al usuario un número entero mayor que 0.
+- Recorrer con un ciclo while desde ese número hasta 0, mostrando cada valor en la consola.
+- Mostrar un mensaje indicando que la cuenta regresiva ha terminado.`,
+        `Números impares — Ciclo for: recorre con un ciclo for los números enteros del 1 al 100.
+- Identificar los números impares dentro de ese rango.
+- Imprimir únicamente esos números en la consola.`,
+        `Menú interactivo — Ciclo while: muestra en la consola un menú con las opciones 1) mensaje de bienvenida, 2) fecha y hora actual, 3) salir del programa.
+- Mantener el menú activo con un ciclo while, solicitando una nueva opción después de cada acción.
+- Finalizar el programa únicamente cuando el usuario seleccione la opción 3.`,
+        `Registro de notas y cálculo del promedio — Ciclo for: solicita al usuario cuántas notas desea registrar.
+- Recorrer esa cantidad con un ciclo for, pidiendo cada nota y acumulando sus valores.
+- Calcular y mostrar el promedio al finalizar el registro.
+- Indicar si el estudiante aprobó (promedio ≥ 3.0) o no aprobó.`,
       ],
     },
   },
@@ -1534,7 +1572,11 @@ function WorkshopSection({ items, topicNum, topicId }: { items: string[]; topicN
       </div>
 
       <div className="space-y-3">
-        {items.map((item, i) => (
+        {items.map((item, i) => {
+          const lines = item.split("\n").map((l) => l.trim()).filter(Boolean);
+          const intro = lines.filter((l) => !l.startsWith("- ")).join(" ");
+          const bullets = lines.filter((l) => l.startsWith("- ")).map((l) => l.slice(2));
+          return (
           <button
             key={i}
             onClick={() => toggle(i)}
@@ -1558,10 +1600,18 @@ function WorkshopSection({ items, topicNum, topicId }: { items: string[]; topicN
               <span className="font-mono text-xs mr-2" style={{ color: T.pyYellow, fontFamily: "'JetBrains Mono', monospace" }}>
                 {i + 1}.
               </span>
-              {item}
+              {intro}
+              {bullets.length > 0 && (
+                <ul className="mt-2 ml-1 space-y-1 list-disc list-inside" style={{ textDecoration: "inherit" }}>
+                  {bullets.map((b, bi) => (
+                    <li key={bi}>{b}</li>
+                  ))}
+                </ul>
+              )}
             </span>
           </button>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -1680,6 +1730,9 @@ export default function App() {
 
   const topic = TOPIC_DATA[activeTopic] ?? null;
   const topicNum = activeTopic === "tema1" ? 1 : activeTopic === "tema2" ? 2 : activeTopic === "tema3" ? 3 : activeTopic === "tema4" ? 4 : 0;
+  const topicOrder = TOPICS.map((t) => t.id);
+  const nextTopicIdx = topicOrder.indexOf(activeTopic);
+  const nextTopic = nextTopicIdx >= 0 && nextTopicIdx < TOPICS.length - 1 ? TOPICS[nextTopicIdx + 1] : null;
 
   const T = {
     bg:       "var(--bg)",
@@ -2018,6 +2071,26 @@ export default function App() {
             </div>
           )}
         </div>
+        )}
+
+        {/* Siguiente módulo */}
+        {activeTopic !== "home" && nextTopic && (
+          <div className="px-4 sm:px-8 max-w-4xl mx-auto pb-8">
+            <button
+              onClick={() => navigate(nextTopic.id)}
+              className="nav-item w-full flex items-center justify-between gap-3 rounded-xl border px-5 py-4 cursor-pointer"
+              style={{ borderColor: T.border, background: T.surface }}
+            >
+              <span className="text-xs font-mono" style={{ color: T.subtle, fontFamily: "'JetBrains Mono', monospace" }}>
+                SIGUIENTE
+              </span>
+              <span className="flex items-center gap-2 text-sm font-semibold" style={{ color: T.text }}>
+                <span>{nextTopic.icon}</span>
+                <span>{nextTopic.label}</span>
+                <span style={{ color: T.accent }}>→</span>
+              </span>
+            </button>
+          </div>
         )}
 
         {/* Volver arriba */}
