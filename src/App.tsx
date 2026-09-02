@@ -272,7 +272,7 @@ numero2 = float(input("Ingrese el segundo número: "))
 
 suma = numero1 + numero2   # Se calcula la suma
 
-print("La suma es:", suma)`,
+print(f"La suma es: {suma}")`,
         input: "5, 3",
         output: "La suma es: 8.0",
       },
@@ -287,7 +287,7 @@ altura = float(input("Ingrese la altura del rectángulo: "))
 
 area = base * altura   # fórmula: base × altura
 
-print("El área del rectángulo es:", area)`,
+print(f"El área del rectángulo es: {area}")`,
         input: "4, 6",
         output: "El área del rectángulo es: 24.0",
       },
@@ -302,7 +302,7 @@ minutos_totales = int(input("Ingrese la cantidad de minutos: "))
 horas   = minutos_totales // 60   # división entera → horas completas
 minutos = minutos_totales % 60    # módulo → minutos restantes
 
-print(minutos_totales, "minutos equivalen a", horas, "horas y", minutos, "minutos")`,
+print(f"{minutos_totales} minutos equivalen a {horas} horas y {minutos} minutos")`,
         input: "130",
         output: "130 minutos equivalen a 2 horas y 10 minutos",
       },
@@ -318,7 +318,7 @@ descuento = float(input("Ingrese el porcentaje de descuento: "))
 valor_descuento = precio * (descuento / 100)   # valor que se descuenta
 precio_final    = precio - valor_descuento      # precio con descuento
 
-print("El precio final a pagar es:", precio_final)`,
+print(f"El precio final a pagar es: {precio_final}")`,
         input: "100000, 20",
         output: "El precio final a pagar es: 80000.0",
       },
@@ -335,7 +335,7 @@ auxiliar = a   # guardar temporalmente el valor de a
 a = b          # a toma el valor de b
 b = auxiliar   # b toma el valor original de a
 
-print("Después del intercambio: a =", a, ", b =", b)`,
+print(f"Después del intercambio: a = {a} , b = {b}")`,
         input: "3, 9",
         output: "Después del intercambio: a = 9.0 , b = 3.0",
       },
@@ -364,9 +364,9 @@ print("Después del intercambio: a =", a, ", b =", b)`,
 numero = float(input("Ingrese un número: "))
 
 if numero > 0:
-    print(numero, "es positivo")
+    print(f"{numero} es positivo")
 elif numero < 0:
-    print(numero, "es negativo")
+    print(f"{numero} es negativo")
 else:
     print("El número es cero")`,
         input: "-4",
@@ -395,9 +395,9 @@ else:
 numero = int(input("Ingrese un número entero: "))
 
 if numero % 2 == 0:      # si el residuo es 0 → es par
-    print(numero, "es par")
+    print(f"{numero} es par")
 else:
-    print(numero, "es impar")`,
+    print(f"{numero} es impar")`,
         input: "7",
         output: "7 es impar",
       },
@@ -436,7 +436,7 @@ elif n2 >= n1 and n2 >= n3:
 else:
     mayor = n3
 
-print("El mayor de los tres números es:", mayor)`,
+print(f"El mayor de los tres números es: {mayor}")`,
         input: "4, 9, 6",
         output: "El mayor de los tres números es: 9.0",
       },
@@ -465,7 +465,7 @@ print("El mayor de los tres números es:", mayor)`,
 numero = int(input("Ingrese un número para ver su tabla de multiplicar: "))
 
 for i in range(1, 11):          # recorre los valores del 1 al 10
-    print(numero, "x", i, "=", numero * i)`,
+    print(f"{numero} x {i} = {numero * i}")`,
         input: "5",
         output: "5 x 1 = 5 … 5 x 10 = 50",
       },
@@ -481,7 +481,7 @@ suma = 0
 for i in range(1, n + 1):
     suma = suma + i
 
-print("La suma de los primeros", n, "números naturales es:", suma)`,
+print(f"La suma de los primeros {n} números naturales es: {suma}")`,
         input: "5",
         output: "La suma de los primeros 5 números naturales es: 15",
       },
@@ -500,7 +500,7 @@ while numero <= n:
         contador = contador + 1
     numero = numero + 1
 
-print("Hay", contador, "números pares entre 1 y", n)`,
+print(f"Hay {contador} números pares entre 1 y {n}")`,
         input: "10",
         output: "Hay 5 números pares entre 1 y 10",
       },
@@ -533,7 +533,7 @@ factorial = 1
 for i in range(1, n + 1):
     factorial = factorial * i
 
-print("El factorial de", n, "es:", factorial)`,
+print(f"El factorial de {n} es: {factorial}")`,
         input: "5",
         output: "El factorial de 5 es: 120",
       },
@@ -565,7 +565,7 @@ print("El factorial de", n, "es:", factorial)`,
 
 try:
     numero = int(input("Ingrese un número entero: "))
-    print("El número ingresado es:", numero)
+    print(f"El número ingresado es: {numero}")
 except ValueError:
     print("Error: debe ingresar un número entero válido.")`,
         input: "hola",
@@ -693,7 +693,7 @@ def pedir_numero(mensaje, minimo, maximo):
                 raise ValueError(f"El valor debe estar entre {minimo} y {maximo}.")
             return valor
         except ValueError as e:
-            print(f"  Entrada inválida: {e} Intente de nuevo.")
+            print("  Entrada inválida: " + str(e) + " Intente de nuevo.")
 
 # ── Solicitar cantidad de estudiantes ───────────────────────
 while True:
@@ -703,7 +703,7 @@ while True:
             raise ValueError("Debe ser un número entero positivo.")
         break
     except ValueError as e:
-        print(f"  Error: {e} Intente de nuevo.")
+        print("  Error: " + str(e) + " Intente de nuevo.")
 
 # ── Variables acumuladoras ───────────────────────────────────
 suma_promedios_grupo = 0
@@ -712,7 +712,7 @@ total_reprobados     = 0
 
 # ── Registro de cada estudiante ──────────────────────────────
 for estudiante in range(1, cantidad_estudiantes + 1):
-    print(f"\\n--- Estudiante {estudiante} ---")
+    print("\\n--- Estudiante", estudiante, "---")
 
     nombre = input("Nombre del estudiante: ").strip()
     if not nombre:
@@ -732,7 +732,7 @@ for estudiante in range(1, cantidad_estudiantes + 1):
         estado           = "✘ Reprobado"
         total_reprobados = total_reprobados + 1
 
-    print(f"  {nombre} → Promedio: {round(promedio, 2)} — {estado}")
+    print("  " + nombre, "→ Promedio:", round(promedio, 2), "—", estado)
     suma_promedios_grupo = suma_promedios_grupo + promedio
 
 # ── Resumen final ────────────────────────────────────────────
@@ -745,10 +745,10 @@ print()
 print("=" * 35)
 print("        RESUMEN DEL GRUPO")
 print("=" * 35)
-print(f"Total de estudiantes : {cantidad_estudiantes}")
-print(f"Aprobados            : {total_aprobados}")
-print(f"Reprobados           : {total_reprobados}")
-print(f"Promedio general     : {round(promedio_grupo, 2)}")
+print("Total de estudiantes :", cantidad_estudiantes)
+print("Aprobados            :", total_aprobados)
+print("Reprobados           :", total_reprobados)
+print("Promedio general     :", round(promedio_grupo, 2))
 print("=" * 35)`,
         input: "2 estudiantes — Ana: 4.0, 3.5, 4.5 | Luis: 2.0, 2.5, 3.0",
         output:
