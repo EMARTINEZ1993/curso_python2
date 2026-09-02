@@ -78,7 +78,7 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 const TOPICS = [
   { id: "home", label: "Inicio", icon: "🏠" },
   { id: "requisitos", label: "Requisitos", icon: "📋" },
-  { id: "intro", label: "Sintaxis básica", icon: "⚙️" },
+  { id: "intro", label: "Tema 0: Sintaxis básica", icon: "⚙️" },
   { id: "tema1", label: "Tema 1: Variables", icon: "📦" },
   { id: "tema2", label: "Tema 2: Condicionales", icon: "🔀" },
   { id: "tema3", label: "Tema 3: Ciclos", icon: "🔁" },
@@ -837,6 +837,8 @@ function RequirementsPage() {
   const cat = useCat();
 
   const files = [
+    { name: "sintaxis_basicas.py", topic: "Ejercicio 0", desc: "Introducción a variables, tipos de datos y formas de mostrar texto en pantalla", color: "#4B8BBE" },
+    { name: "operadores.py", topic: "Ejercicio 0", desc: "Operadores aritméticos disponibles en Python", color: "#4B8BBE" },
     { name: "variables.py", topic: "Tema 1", desc: "Variables, operaciones y salida en pantalla", color: "#3dd68c" },
     { name: "condicionales.py", topic: "Tema 2", desc: "Estructuras condicionales (if, elif, else)", color: "#f7c948" },
     { name: "ciclos.py", topic: "Tema 3", desc: "Ciclos for y while", color: "#ff7b72" },
@@ -880,8 +882,8 @@ function RequirementsPage() {
       extra: (T: ReturnType<typeof useT>) => (
         <div className="mt-3 rounded-lg px-4 py-3 font-mono text-xs space-y-1" style={{ background: T.codeBg, border: `1px solid ${T.border}`, fontFamily: "'JetBrains Mono', monospace" }}>
           <div>📁 <span style={{ color: T.pyYellow }}>python_1</span>/</div>
-          {["variables.py", "condicionales.py", "ciclos.py", "errores.py", "integrador.py"].map((f, i) => (
-            <div key={f} className="ml-4" style={{ color: ["#3dd68c","#f7c948","#ff7b72","#bc8cff","#79c0ff"][i] }}>
+          {["sintaxis_basicas.py", "operadores.py", "variables.py", "condicionales.py", "ciclos.py", "errores.py", "integrador.py"].map((f, i) => (
+            <div key={f} className="ml-4" style={{ color: ["#4B8BBE","#4B8BBE","#3dd68c","#f7c948","#ff7b72","#bc8cff","#79c0ff"][i] }}>
               └── {f}
             </div>
           ))}
@@ -894,7 +896,7 @@ function RequirementsPage() {
       desc: 'Con el archivo abierto en VS Code, presionar el botón ▶ (Run Python File) en la esquina superior derecha, o usar el terminal integrado con el comando python variables.py.',
       extra: (T: ReturnType<typeof useT>) => (
         <div className="mt-3 rounded-lg px-4 py-3 font-mono text-xs" style={{ background: T.codeBg, color: T.muted, border: `1px solid ${T.border}`, fontFamily: "'JetBrains Mono', monospace" }}>
-          <span style={{ color: T.subtle }}>$</span> <span style={{ color: T.accent }}>python</span> variables.py
+          <span style={{ color: T.subtle }}>$</span> <span style={{ color: T.accent }}>python</span> sintaxis_basicas.py
         </div>
       ),
     },
@@ -1157,7 +1159,7 @@ function HomePage({
   const T = useT();
   const cat = useCat();
   const modules = [
-    { id: "intro", icon: "⚙️", label: "Sintaxis básica", color: "#4B8BBE", desc: "Variables, tipos de datos, print() y f-strings. El punto de partida." },
+    { id: "intro", icon: "⚙️", label: "Tema 0: Sintaxis básica", color: "#4B8BBE", desc: "Variables, tipos de datos, print() y f-strings. El punto de partida." },
     { id: "tema1", icon: "📦", label: "Tema 1: Variables", color: "#3dd68c", desc: "Operadores aritméticos, input() y transformación de datos." },
     { id: "tema2", icon: "🔀", label: "Tema 2: Condicionales", color: "#f7c948", desc: "if, elif, else — decisiones lógicas dentro del programa." },
     { id: "tema3", icon: "🔁", label: "Tema 3: Ciclos", color: "#ff7b72", desc: "for y while — automatizar la repetición de acciones." },
