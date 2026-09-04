@@ -1208,6 +1208,7 @@ function HomePage({
   return (
     <div className="px-4 sm:px-8 py-8 sm:py-10 max-w-4xl mx-auto space-y-10 sm:space-y-12">
       {/* Bienvenida con nombre animado */}
+      <WelcomeName name={userName} onSet={onSetName} />
 
       {/* Hero */}
       <div className="space-y-4">
@@ -1793,14 +1794,18 @@ export default function App() {
           <div className="px-4 mb-2">
             <div className="rounded-lg px-3 py-2.5" >
 
-              <div className="h-1 rounded-full mt-2 overflow-hidden" style={{ background: light ? "rgba(15,23,42,0.10)" : "rgba(255,255,255,0.10)" }}>
+              <div className="text-[10px] font-mono uppercase tracking-widest mb-2" style={{ color: T.faint, fontFamily: "'JetBrains Mono', monospace" }}>
+                Progreso del taller
+              </div>
+              <div className="h-1.5 rounded-full overflow-hidden" style={{ background: light ? "rgba(15,23,42,0.10)" : "rgba(255,255,255,0.10)" }}>
                 <div
                   className="h-full rounded-full"
                   style={{ width: `${progressPct}%`, background: T.accent, transition: "width 0.5s cubic-bezier(0.22,0.7,0.3,1)" }}
                 />
               </div>
-              <div className="text-xs mt-1.5" style={{ color: T.subtle }}>
-                
+              <div className="text-xs mt-1.5 flex items-center justify-between" style={{ color: T.subtle }}>
+                <span>{doneCount}/{totalWorkshopItems} ejercicios</span>
+                <span className="font-semibold" style={{ color: T.muted }}>{progressPct}%</span>
               </div>
             </div>
           </div>
@@ -1845,10 +1850,12 @@ export default function App() {
               className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
               style={{ background: `linear-gradient(135deg, ${T.pyBlue} 0%, ${T.pyBlue2} 100%)`, color: "#fff" }}
             >
-              L
+              {userName ? userName.trim().charAt(0).toUpperCase() : "E"}
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-xs font-semibold truncate" style={{ color: T.text }}>Luz Eliana Martínez</div>
+              <div className="text-xs font-semibold truncate" style={{ color: T.text }}>
+                {userName || "Estudiante Eli.Py"}
+              </div>
               <a
                 href="https://github.com/EMARTINEZ1993"
                 target="_blank"
@@ -1858,7 +1865,7 @@ export default function App() {
                 onMouseEnter={e => (e.currentTarget.style.color = T.accent)}
                 onMouseLeave={e => (e.currentTarget.style.color = T.subtle)}
               >
-                @EMARTINEZ1993
+                @EMARTINEZ1993 · Docente
               </a>
             </div>
             <span className="text-xs flex-shrink-0" style={{ color: T.faint }}>© 26</span>
