@@ -114,7 +114,7 @@ const TOPIC_DATA: Record<string, Topic> = {
     exercises: [
       {
         id: "vars",
-        title: "variables.py — Declaración y tipos",
+        title: "sintaxis_basicas.py — Declaración y tipos",
         description:
           "Una variable permite almacenar un dato para utilizarlo posteriormente dentro del programa.",
         code: `# ============================================================
